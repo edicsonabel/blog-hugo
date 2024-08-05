@@ -3,19 +3,19 @@ En este sitio encontraras varios apartados que me gustaría compartir con ustede
 
 ## Desarrollo 
 
-### Archivos en la carpeta `.vscode`
-Creamos la carpeta con el comando
+### Configuración en Visual Studio Code
+Creamos la carpeta `.vscode` con el comando
 ```sh
-# Mac OS, Linux
+# macOS, Linux
 mkdir .vscode
 ```
-y posteriormente creamos lo siguientes archivos
+ posteriormente creamos lo siguientes archivos
 
 #### `settings.json`
 Creamos el archivo
 
 ```sh
-# Mac OS, Linux
+# macOS, Linux
 touch .vscode/settings.json
 ```
 Ingresamos la configuración siguiente
