@@ -1,0 +1,29 @@
+baseURL = 'https://edicsonabel.com'
+languageCode = 'es-VE'
+title = 'Edicson Abel'
+
+disableHugoGeneratorInject = true
+defaultContentLanguage = 'es'
+preserveTaxonomyNames = true
+paginate = 7
+
+[permalinks]
+  posts = '/:filename/'
+
+[params]
+  description = 'Te ayudaré en tu camino de desarrollador Front-End y Back-End, así dominaremos el mundo'
+  favicon = '/images/favicon/icon.svg'
+  appName='Edicson Abel'
+  appThemeColor='#000a14'
+  twitter = 'edicsonabel_'
+  instagram = 'edicsonabel_'
+  facebook = 'EdicsonAbel'
+
+[markup]
+  [markup.highlight]
+    guessSyntax = true
+    noClasses = false
+    tabWidth = 2
+
+[markup.goldmark.renderer]
+unsafe = true

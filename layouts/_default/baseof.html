@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1" />
+
+    <title>{{- .Title | default .Site.Title -}}</title>
+    <link
+      rel="icon"
+      href="{{ absURL .Site.Params.favicon | safeHTMLAttr}}"
+      type="image/svg+xml" />
+
+    <!-- prettier-ignore -->
+    {{ $css := resources.Get "styles/global.css" }}
+    {{ $style := $css | resources.Minify }}
+    <!-- prettier-ignore -->
+    <style>{{$style.Content | safeCSS}}</style>
+
+    <!-- prettier-ignore -->
+    {{ $css := resources.Get "styles/style.css" }}
+    {{ $style := $css | resources.Minify }}
+    <!-- prettier-ignore -->
+    <style>{{$style.Content | safeCSS}}</style>
+
+    <meta
+      name="description"
+      content="{{- .Description | default .Site.Params.Description -}}" />
+    <link rel="canonical" href="{{ .Permalink }}" />
+
+    <meta
+      name="apple-mobile-web-app-title"
+      content="{{ .Site.Params.appName}}" />
+    <meta name="application-name" content="{{ .Site.Params.appName }}" />
+    <meta name="theme-color" content="{{ .Site.Params.appThemeColor }}" />
+
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta
+      property="og:type"
+      content='{{ cond (isset .Params "tags") "article" "website" }}' />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="twitter:creator" content="@{{ .Site.Params.twitter }}" />
+    <meta name="twitter:domain" content="{{ .Site.BaseURL }}" />
+    {{ $image := .Site.Params.favicon}}
+    <meta name="twitter:image" content="{{ absURL $image | safeHTMLAttr }}" />
+    <meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
+
+    <link rel="manifest" href='{{ absURL "manifest.json"}}' />
+
+    <meta property="og:locale" content="{{ .Site.Language }}" />
+    <meta property="og:title" content="{{ .Title | default .Site.Title }}" />
+    <meta property="og:image" content="{{ absURL $image | safeHTMLAttr }}" />
+    <meta
+      property="og:description"
+      content="{{- .Description | default .Site.Params.Description -}}" />
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+
+    <!-- prettier-ignore -->
+    {{ if isset .Params "tags" }}
+    {{ $date := "2006-01-02T15:04:05Z07:00" }}
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "{{ .Title }}",
+        "image": ["{{ absURL $image | safeHTMLAttr }}"],
+        "datePublished": "{{ .Date.Format $date }}"
+      }
+    </script>
+    {{ end }}
+  </head>
+
+  <body class='{{ cond (isset .Params "audio") "body-player" ""}}'>
+    <!-- prettier-ignore -->
+    {{ block "main" . }}{{ end }}
+    {{ $js := resources.Get "js/scripts.js" }}
+    {{ $script := $js | resources.Minify }}
+    <!-- prettier-ignore -->
+    <script>{{$script.Content | safeJS}}</script>
+  </body>
+</html>

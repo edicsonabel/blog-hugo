@@ -1,0 +1,20 @@
+{{ if .Title }}
+<figure class="center">
+  <img
+    class="w-full"
+    alt="{{ .Text }}"
+    loading="lazy"
+    decoding="async"
+    src="{{ .Destination | safeURL }}"
+  />
+  <figcaption>{{ .Title }}</figcaption>
+</figure>
+{{ else }}
+<img
+  class="w-full"
+  alt="{{ .Text }}"
+  loading="lazy"
+  decoding="async"
+  src="{{ .Destination | safeURL }}"
+/>
+{{ end }}

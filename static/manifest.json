@@ -1,0 +1,13 @@
+{
+  "name": "Edicson Abel",
+  "short_name": "Edicson Abel",
+  "icons": [
+    {
+      "src": "/images/favicon/icon.svg",
+      "sizes": "any"
+    }
+  ],
+  "theme_color": "#000a14",
+  "display": "standalone",
+  "start_url": "/?utm_source=web_app_manifest"
+}

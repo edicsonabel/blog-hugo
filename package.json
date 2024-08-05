@@ -1,0 +1,27 @@
+{
+  "name": "blog-hugo",
+  "private": true,
+  "description": "Edicson Abel | Blog Personal",
+  "author": "Edicson Abel <edicsonabelinfo@gmail.com>",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edicsonabel/blog-hugo"
+  },
+  "bugs": {
+    "url": "https://github.com/edicsonabel/blog-hugo/issues"
+  },
+  "scripts": {
+    "build": "npm run build:tw && hugo --minify",
+    "build:tw": "npx tailwindcss -i ./assets/styles/main.css -o ./assets/styles/style.css",
+    "start": "hugo server -F -D & npm run build:tw --watch"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "hugo-bin": "0.128.0",
+    "tailwindcss": "3.4.7"
+  }
+}
