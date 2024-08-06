@@ -71,6 +71,19 @@
       }
     </script>
     {{ end }}
+
+    <!-- LITE YOUTUBE -->
+    <!-- prettier-ignore -->
+    {{ $liteYouTubeBuild := false }}
+    {{ $css := resources.Get "libraries/lite-youtube/lite-youtube.css" }}
+    {{ $style := $css | resources.Minify }}
+    <!-- prettier-ignore -->
+    <style>{{$style.Content | safeCSS}}</style>
+    <!-- prettier-ignore -->
+    {{ $js := resources.Get "libraries/lite-youtube/lite-youtube.js" }}
+    {{ $script := $js | resources.Minify }}
+    <!-- prettier-ignore -->
+    <script>{{$script.Content | safeJS}}</script>
   </head>
 
   <body>
