@@ -2,12 +2,48 @@
 module.exports = {
   content: ['content/**/*.md', 'layouts/**/*.html'],
   theme: {
-    colors: {
-      primary: 'var(--color-primary)',
-      secondary: 'var(--color-secondary)',
-      'blue-dark': 'var(--color-blue-dark)'
+    extend: {
+      colors: {
+        dark: 'rgb(var(--color-dark) / <alpha-value>)',
+        light: 'rgb(var(--color-light) / <alpha-value>)',
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+        black: 'rgb(var(--color-black) / <alpha-value>)',
+        'blue-dark': 'rgb(var(--color-blue-dark) / <alpha-value>)',
+        'gray-dark': 'rgb(var(--color-gray-dark) / <alpha-value>)'
+      }
     },
-    extend: {}
+    fontFamily: {
+      sans: [
+        '"Inter"',
+        '"ui-sans-serif"',
+        '"system-ui"',
+        '"sans-serif"',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"'
+      ],
+      serif: [
+        '"ui-serif"',
+        '"Georgia"',
+        '"Cambria"',
+        '"Times New Roman"',
+        '"Times"',
+        '"serif"'
+      ],
+      mono: [
+        '"ui-monospace"',
+        '"SFMono-Regular"',
+        '"Menlo"',
+        '"Monaco"',
+        '"Consolas"',
+        '"Liberation Mono"',
+        '"Courier New"',
+        '"monospace"'
+      ]
+    }
   },
-  plugins: []
+  plugins: [],
+  darkMode: 'selector'
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language }}">
+<html class="dark" lang="{{ .Site.Language }}">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -46,7 +46,7 @@
     <style>{{$style.Content | safeCSS}}</style>
 
     <!-- prettier-ignore -->
-    {{ $css := resources.Get "styles/style.css" }}
+    {{ $css := resources.Get "styles/tailwind.build.css" }}
     {{ $style := $css | resources.Minify }}
     <!-- prettier-ignore -->
     <style>{{$style.Content | safeCSS}}</style>
@@ -84,15 +84,23 @@
     {{ $script := $js | resources.Minify }}
     <!-- prettier-ignore -->
     <script>{{$script.Content | safeJS}}</script>
-  </head>
-
-  <body>
     <!-- prettier-ignore -->
-    {{ partial "header.html" . }}
-    {{ block "main" . }}{{ end }}
-    {{ $js := resources.Get "js/scripts.js" }}
+    {{ $js := resources.Get "js/script.start.js" }}
     {{ $script := $js | resources.Minify }}
     <!-- prettier-ignore -->
     <script>{{$script.Content | safeJS}}</script>
+  </head>
+
+  <body class="text-dark dark:text-light bg-white dark:bg-blue-dark text-xl">
+    <!-- prettier-ignore -->
+    {{ partial "header.html" . }}
+    {{ partial "btn-theme.html" . }}
+    {{ block "main" . }}
+    {{ end }}
+    {{ $js := resources.Get "js/script.end.js" }}
+    {{ $script := $js | resources.Minify }}
+    <!-- prettier-ignore -->
+    <script>{{$script.Content | safeJS}}</script>
+    {{ partial "footer.html" . }}
   </body>
 </html>

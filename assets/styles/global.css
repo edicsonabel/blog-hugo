@@ -1,11 +1,10 @@
-:root {
-  --color-primary: #4ecdc4;
-  --color-secondary: #eef36a;
-  --color-light: #f5f3f5;
-  --color-dark: #242325;
-  --color-blue-dark: #001021;
-  --color-gray-dark: #3c4043;
-  --color-black: #000a14;
-  --color-orange: #ff5959;
-  --color-mustard: #fabb51;
+/* TODOS LOS ELEMENTOS  */
+& * {
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+/*  BODY  */
+&,
+& *::before,
+& *::after {
+  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }

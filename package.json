@@ -15,13 +15,13 @@
   },
   "scripts": {
     "build": "npm run build:tw && hugo --minify",
-    "build:tw": "npx tailwindcss -i ./assets/styles/main.css -o ./assets/styles/style.css",
-    "start": "hugo server -F -D & npm run build:tw --watch"
+    "build:tw": "npx tailwindcss -i ./assets/styles/tailwind.css -o ./assets/styles/tailwind.build.css",
+    "start": "npm run build:tw && hugo server -F -D & npm run build:tw --watch"
   },
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "hugo-bin": "0.128.0",
-    "tailwindcss": "3.4.7"
+    "hugo-bin": "0.130.1",
+    "tailwindcss": "3.4.10"
   }
 }
