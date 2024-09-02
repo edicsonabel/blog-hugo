@@ -14,9 +14,12 @@
     "url": "https://github.com/edicsonabel/blog-hugo/issues"
   },
   "scripts": {
-    "build": "npm run build:tw && hugo --minify",
-    "build:tw": "npx tailwindcss -i ./assets/styles/tailwind.css -o ./assets/styles/tailwind.build.css",
-    "start": "npm run build:tw && hugo server -F -D & npm run build:tw --watch"
+    "build": "npm run start:tw && hugo --minify",
+    "start": "npm run start:tw && npm run start:hg & npm run start:tw --watch",
+    "start:tw": "npx tailwindcss -i ./assets/styles/tailwind.css -o ./assets/styles/tailwind.build.css",
+    "start:hg": "hugo server -F -D",
+    "clear": "rm -rf ./assets/styles/tailwind.build.css public resources",
+    "clear:all": "npm run clear node_modules .hugo_build.lock bun.lockb"
   },
   "keywords": [],
   "license": "ISC",
