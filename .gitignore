@@ -76,4 +76,4 @@ src/css-dev
 # Others #
 ######################
 .vscode
-/assets/styles/style.css
+/assets/styles/tailwind.build.css
