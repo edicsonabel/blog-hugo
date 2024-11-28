@@ -86,7 +86,9 @@
       href="{{ absURL .Site.Params.favicon | safeHTMLAttr}}"
       type="image/svg+xml"
     />
+  </head>
 
+  <body class="text-dark dark:text-light bg-white dark:bg-blue-dark text-xl">
     <!-- LITE YOUTUBE -->
     <!-- prettier-ignore -->
     <!-- {{ $liteYouTubeBuild := false }} -->
@@ -96,26 +98,25 @@
     <style>{{$style.Content | safeCSS}}</style>
     <!-- prettier-ignore -->
     {{ $js := resources.Get "libraries/lite-youtube/lite-youtube.js" }}
-    {{ $script := $js | resources.Minify }}
+      {{ $script := $js | resources.Minify }}
     <!-- prettier-ignore -->
     <script>{{$script.Content | safeJS}}</script>
     <!-- prettier-ignore -->
     {{ $js := resources.Get "js/script.start.js" }}
-    {{ $script := $js | resources.Minify }}
+      {{ $script := $js | resources.Minify }}
     <!-- prettier-ignore -->
     <script>{{$script.Content | safeJS}}</script>
-  </head>
 
-  <body class="text-dark dark:text-light bg-white dark:bg-blue-dark text-xl">
     <!-- prettier-ignore -->
     {{ partial "header.html" . }}
     {{ partial "btn-theme.html" . }}
-    {{ block "main" . }}
-    {{ end }}
+    {{ block "main" . }} {{ end }}
+    {{ partial "footer.html" . }}
+
+    <!-- prettier-ignore -->
     {{ $js := resources.Get "js/script.end.js" }}
     {{ $script := $js | resources.Minify }}
     <!-- prettier-ignore -->
     <script>{{$script.Content | safeJS}}</script>
-    {{ partial "footer.html" . }}
   </body>
 </html>
