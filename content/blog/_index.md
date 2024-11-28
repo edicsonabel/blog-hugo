@@ -1,7 +1,6 @@
 ---
-title: 'blog'
+title: 'Blog'
 description: 'Description de blog'
-image: '/images/og/blog.jpg'
 type: 'page'
 layout: 'empty'
 ---

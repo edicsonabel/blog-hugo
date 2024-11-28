@@ -1,7 +1,6 @@
 ---
-title: 'home'
+title: '🚀 JavaScript, React, Node, Linux y más'
 description: 'Description de home'
-image: '/images/og/home.jpg'
 type: 'page'
 layout: 'empty'
 ---

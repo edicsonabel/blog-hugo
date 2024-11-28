@@ -1,7 +1,6 @@
 ---
-title: 'me'
+title: 'Sobre mí'
 description: 'Description de me'
-image: '/images/og/me.jpg'
 type: 'page'
 layout: 'empty'
 ---

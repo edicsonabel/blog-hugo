@@ -1,7 +1,6 @@
 ---
-title: 'search'
+title: 'Search'
 description: 'Description de search'
-image: '/images/og/search.jpg'
 type: 'page'
 layout: 'empty'
 ---

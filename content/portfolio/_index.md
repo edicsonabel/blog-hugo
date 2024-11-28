@@ -1,7 +1,6 @@
 ---
-title: 'portfolio'
+title: 'Portfolio'
 description: 'Description de portfolio'
-image: '/images/og/portfolio.jpg'
 type: 'page'
 layout: 'empty'
 ---
