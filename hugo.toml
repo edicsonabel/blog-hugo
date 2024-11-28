@@ -1,23 +1,24 @@
-baseURL = 'https://edicsonabel.com'
-languageCode = 'es-VE'
-title = 'Edicson Abel'
+baseURL = "https://edicsonabel.com"
+languageCode = "es-VE"
+title = "Edicson Abel"
 
 disableHugoGeneratorInject = true
-defaultContentLanguage = 'es'
+defaultContentLanguage = "es"
 preserveTaxonomyNames = true
 paginate = 7
 
 [permalinks]
-  posts = '/:filename/'
+  posts = "/:filename/"
 
 [params]
-  description = 'Te ayudaré en tu camino de desarrollador Front-End y Back-End, así dominaremos el mundo'
-  favicon = '/images/favicon/icon.svg'
-  appName='Edicson Abel'
-  appThemeColor='#000a14'
-  twitter = 'edicsonabel_'
-  instagram = 'edicsonabel_'
-  facebook = 'EdicsonAbel'
+  description = "Te ayudaré en tu camino de desarrollador Front-End y Back-End, así dominaremos el mundo"
+  favicon = "/images/favicon/icon.svg"
+  ogImage = "/images/og-image.jpg"
+  appName="Edicson Abel"
+  appThemeColor="#000a14"
+  twitter = "edicsonabel_"
+  instagram = "edicsonabel_"
+  facebook = "EdicsonAbel"
 
 [markup]
   [markup.highlight]
