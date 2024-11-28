@@ -1,3 +1,28 @@
+<!-- Título a mostrar -->
+<!-- prettier-ignore -->
+{{ $title := .Site.Title}}
+{{ if .Title }}
+  {{ $title = (print .Title " | " .Site.Title) }}
+{{end}}
+
+<!-- Descripción a mostrar -->
+<!-- prettier-ignore -->
+{{ $description := .Site.Params.Description}}
+{{ if .Description }}
+  {{ $description = .Description }}
+{{end}}
+
+<!-- Imagen a mostrar -->
+<!-- prettier-ignore -->
+{{ $image := .Site.Params.ogImage }}
+{{ if .Params.image }}
+  {{ $image = .Params.image  }}
+{{end}}
+
+<!-- Imagen a mostrar -->
+<!-- prettier-ignore -->
+{{ $appName := .Site.Params.appName }}
+
 <!DOCTYPE html>
 <html class="dark" lang="{{ .Site.Language }}">
   <head>
@@ -6,38 +31,42 @@
       name="viewport"
       content="width=device-width,minimum-scale=1,initial-scale=1"
     />
-    <meta
-      name="description"
-      content="{{- .Description | default .Site.Params.Description -}}"
-    />
-    <meta
-      name="apple-mobile-web-app-title"
-      content="{{ .Site.Params.appName}}"
-    />
-    <meta name="application-name" content="{{ .Site.Params.appName }}" />
+    <meta name="description" content="{{ $description }}" />
+    <meta name="apple-mobile-web-app-title" content="{{ $appName }}" />
+    <meta name="application-name" content="{{ $appName }}" />
     <meta name="theme-color" content="{{ .Site.Params.appThemeColor }}" />
     <meta property="og:url" content="{{ .Permalink }}" />
-    <meta
-      property="og:type"
-      content='{{ cond (isset .Params "tags") "article" "website" }}'
-    />
+    {{ block "seo" . }}
+    <meta property="og:type" content="website" />
+    <!-- prettier-ignore -->
+    {{ $images := .Site.Params.ogImage }}
+    {{ if .Params.image }}
+      {{ $images = .Params.image  }}
+    {{end}}
+
+    <!-- prettier-ignore -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "{{ .Title }}",
+        "image": "{{ absURL $images | safeHTMLAttr }}"
+      }
+    </script>
+    {{ end }}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@{{ .Site.Params.twitter }}" />
     <meta name="twitter:domain" content="{{ .Site.BaseURL }}" />
-    {{ $image := .Site.Params.favicon}}
     <meta name="twitter:image" content="{{ absURL $image | safeHTMLAttr }}" />
     <meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
     <meta property="og:locale" content="{{ .Site.Language }}" />
-    <meta property="og:title" content="{{ .Title | default .Site.Title }}" />
+    <meta property="og:title" content="{{ $title }}" />
     <meta property="og:image" content="{{ absURL $image | safeHTMLAttr }}" />
-    <meta
-      property="og:description"
-      content="{{- .Description | default .Site.Params.Description -}}"
-    />
-    <meta property="og:site_name" content="{{ .Site.Title }}" />
+    <meta property="og:description" content="{{ $description }}" />
+    <meta property="og:site_name" content="{{ $appName }}" />
 
     <link rel="canonical" href="{{ .Permalink }}" />
-    <link rel="manifest" href='{{ absURL "manifest.json"}}' />
+    <link rel="manifest" href="{{ absURL "manifest.json"}}" />
 
     <!-- prettier-ignore -->
     {{ $css := resources.Get "styles/global.css" }}
@@ -50,33 +79,19 @@
     {{ $style := $css | resources.Minify }}
     <!-- prettier-ignore -->
     <style>{{$style.Content | safeCSS}}</style>
-
-    <title>{{- .Title | default .Site.Title -}}</title>
+    <!-- prettier-ignore -->
+    <title>{{ $title }}</title>
     <link
       rel="icon"
       href="{{ absURL .Site.Params.favicon | safeHTMLAttr}}"
       type="image/svg+xml"
     />
 
-    <!-- prettier-ignore -->
-    {{ if isset .Params "tags" }}
-    {{ $date := "2006-01-02T15:04:05Z07:00" }}
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@type": "NewsArticle",
-        "headline": "{{ .Title }}",
-        "image": ["{{ absURL $image | safeHTMLAttr }}"],
-        "datePublished": "{{ .Date.Format $date }}"
-      }
-    </script>
-    {{ end }}
-
     <!-- LITE YOUTUBE -->
     <!-- prettier-ignore -->
-    {{ $liteYouTubeBuild := false }}
-    {{ $css := resources.Get "libraries/lite-youtube/lite-youtube.css" }}
-    {{ $style := $css | resources.Minify }}
+    <!-- {{ $liteYouTubeBuild := false }} -->
+    {{ $css := resources.Get "libraries/lite-youtube/lite-youtube.css" }} {{
+    $style := $css | resources.Minify }}
     <!-- prettier-ignore -->
     <style>{{$style.Content | safeCSS}}</style>
     <!-- prettier-ignore -->

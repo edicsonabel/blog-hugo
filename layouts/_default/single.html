@@ -1,5 +1,27 @@
-{{ define "main" }}
-<h1>{{ .Title }}</h1>
+{{ define "seo" }}
+<meta property="og:type" content="article" />
 <!-- prettier-ignore -->
-{{ .Content }}
+{{ $images := .Site.Params.ogImage }}
+{{ if .Params.image }}
+  {{ $images = .Params.image }}
+{{end}}
+{{ $date := .Params.date }}
+{{ $date = time.AsTime $date }}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "{{ .Title }}",
+    "image": "{{ absURL $images | safeHTMLAttr }}",
+    "datePublished": "{{ $date.Format "2006-01-02" }}"
+  }
+</script>
+<!-- prettier-ignore -->
+{{ end }}
+
+{{ define "main" }}
+<main class="h-dvh">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+</main>
 {{ end }}
